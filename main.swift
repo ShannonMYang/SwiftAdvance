@@ -50,3 +50,26 @@ let squares = fibs.map { fib in
     fib * fib
 }
 print(squares)
+
+print("----------分-----割-----线----------")
+
+// 将数组中的元素按照相邻且相等的方式分开
+let array: [Int] = [1, 2, 2, 2, 3, 4, 4]
+var result: [[Int]] = array.isEmpty ? [] : [[array[0]]]
+for (previous, current) in zip(array, array.dropFirst()) {
+    if previous == current {
+        result[result.endIndex - 1].append(current)
+    } else {
+        result.append([current])
+    }
+}
+print(result) // [[1], [2, 2, 2], [3], [4, 4]]
+// 利用Array的扩展，实现相同的效果
+let parts = array.split { $0 != $1 }
+print(parts)
+
+print("----------分-----割-----线----------")
+
+let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(nums.filter { num in num % 2 == 0 })
+print(nums.filter { $0 % 2 == 0 })
